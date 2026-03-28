@@ -3,6 +3,7 @@ import richWord as rw
 
 class MultiDictionary:
 
+    """ Usa strategia Greedy -> carica direttamente tutte e 3 i file"""
     def __init__(self):
         self._english = d.Dictionary([], "english")
         self._italian = d.Dictionary([], "italian")
@@ -22,6 +23,7 @@ class MultiDictionary:
         else:
             print("Language not supported")
 
+    """ Guardo se la parola è CONTENUTA -> non sfoglio """
     def searchWord(self, words, language):
         # words is a list of strings
         parole = []
@@ -46,6 +48,7 @@ class MultiDictionary:
 
         return parole
 
+    """ Sfoglio la mia lista e cerco la parola -> LINEARE"""
     def searchWordLinear(self, words, language):
         # words is a list of strings
         parole = []
@@ -73,6 +76,7 @@ class MultiDictionary:
 
         return parole
 
+    """ Divido la mia lista a metà e guardo se spostarmi a sx o dx -> meglio della lineare"""
     def searchWordDichotomic(self, words, language):
         # words is a list of strings
         parole = []
@@ -110,6 +114,6 @@ def dichotomicSearch(word, currentDic):
         elif word > currentW:  # in python < applied to strings gives True if the first string is before in lexicographic order
             start = mean+1
         else:
-            end = mean
+            end = mean # Diventa end in modo tale da cercare solo nella prima parte della lista escludendo la seconda.
 
     return False
